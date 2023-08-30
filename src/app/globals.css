@@ -2,26 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer utilities {
+  .hot-bg {
+    background: linear-gradient(129deg, #F68A1D 14.06%, #FF1B09 53.65%, #FB09C3 89.58%);
+  }
+  .hot-text {
+    background: linear-gradient(129deg, #F68A1D 14.06%, #FF1B09 53.65%, #FB09C3 89.58%);
+    background-clip: text;  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  }
+  .cool-text{
+    background: linear-gradient(180deg, #33C5E2 0%, #33C5E2 50%, rgba(226, 228, 228, 0) 100%);
+    background-clip: text;  
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .dark-bg{
+    background: linear-gradient(137deg, #17071A 0%, rgba(33, 6, 38, 0.52) 52.08%, rgba(76, 11, 87, 0.199) 100%)
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+html{
+  background: #0E0E0E;
+  color-scheme: dark;
+}
+
+body{
+  background: linear-gradient(137deg, #17071A 0%, rgba(33, 6, 38, 0.52) 52.08%, rgba(75, 11, 87, 0.00) 100%)
 }
