@@ -22,7 +22,11 @@
   .dark-bg{
     background: linear-gradient(137deg, #17071A 0%, rgba(33, 6, 38, 0.52) 52.08%, rgba(76, 11, 87, 0.199) 100%)
   }
+  .hot-btn{
+    @apply hot-bg text-white hover:opacity-80 font-gideon_roman;
+  }
 }
+
 
 html{
   background: #0E0E0E;

@@ -29,10 +29,10 @@ export const Header = () => {
             Swap
           </Link>
           <Link
-            href="/"
-            className={classNames(pathname === "/faucet" ? "hot-text" : "")}
+            href="/fountain"
+            className={classNames(pathname === "/fountain" ? "hot-text" : "")}
           >
-            faucet
+            fountain
           </Link>
           <Link
             href="/"

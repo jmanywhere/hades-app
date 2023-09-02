@@ -5,6 +5,8 @@ const config: Config = {
     base: false,
     themes:[{
       'hadesTheme':{
+        primary: "#F68A1D",
+        'secondary' : "#33C5E2",
         'base-100' : "#160A1A"
       }
     }]
