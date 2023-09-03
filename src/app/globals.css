@@ -19,11 +19,17 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .cool-bg{
+    background: linear-gradient(180deg, #33C5E2 0%, #33C5E2 50%, rgba(226, 228, 228, 0) 100%);
+  }
   .dark-bg{
     background: linear-gradient(137deg, #17071A 0%, rgba(33, 6, 38, 0.52) 52.08%, rgba(76, 11, 87, 0.199) 100%)
   }
   .hot-btn{
     @apply hot-bg text-white hover:opacity-80 font-gideon_roman;
+  }
+  .cool-btn{
+    @apply cool-bg text-purple-800 hover:opacity-80 font-gideon_roman;
   }
 }
 

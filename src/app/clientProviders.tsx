@@ -1,5 +1,6 @@
 "use client";
 
+import { Provider } from "jotai";
 import { EthereumClient } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { WagmiConfig } from "wagmi";
@@ -10,12 +11,14 @@ const ethereumClient = new EthereumClient(config, chains);
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <WagmiConfig config={config}>
-      {children}
-      <Web3Modal
-        projectId={walletConnectProjectId}
-        ethereumClient={ethereumClient}
-      />
-    </WagmiConfig>
+    <Provider>
+      <WagmiConfig config={config}>
+        {children}
+        <Web3Modal
+          projectId={walletConnectProjectId}
+          ethereumClient={ethereumClient}
+        />
+      </WagmiConfig>
+    </Provider>
   );
 }

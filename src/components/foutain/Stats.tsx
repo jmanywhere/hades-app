@@ -1,13 +1,27 @@
+"use client";
+import { userAtom } from "@/atoms/fountain";
+import useFetchUserData from "@/hooks/useFetchUserData";
+import { useAtomValue } from "jotai";
 import { formatEther, parseEther } from "viem";
 
 const StatContainer = () => {
+  useFetchUserData();
+  const userData = useAtomValue(userAtom);
   return (
     <section className="flex flex-col items-center justify-center">
       <div className="flex flex-col md:flex-row md:max-w-lg lg:max-w-screen flex-wrap items-center justify-center gap-4 pt-5">
-        <Stat name="nfv" value={parseEther("1500.1111")} />
-        <Stat name="gfv" value={parseEther("35800.2222")} />
-        <Stat name="claimable" value={parseEther("823456.8888")} />
-        <Stat name="pending" value={parseEther("55.56")} />
+        <Stat name="nfv" value={userData.nfv} />
+        <Stat name="gfv" value={userData.gfv} />
+        <Stat
+          name="claimable"
+          value={userData.faucetPayout + userData.rebasePayout}
+        />
+        <Stat
+          name="pending"
+          value={
+            userData.maxPayout - userData.faucetPayout - userData.rebasePayout
+          }
+        />
       </div>
     </section>
   );
@@ -21,9 +35,7 @@ const Stat = (props: { name: string; value: bigint }) => {
           - {props.name} -
         </div>
         <div className="text-center hot-text text-2xl font-sans">
-          {parseFloat(
-            parseFloat(formatEther(props.value)).toFixed(2)
-          ).toLocaleString()}
+          {parseFloat(formatEther(props.value)).toLocaleString()}
         </div>
       </div>
     </div>
