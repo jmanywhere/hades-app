@@ -1,0 +1,5 @@
+- HADES bonus is the rebase extra percent amount.
+- INPUT add how much HADES is available in the wallet.
+- Cerberus HADES indicator (aka NERD)
+  - if NERD is oK, cerberus image is green and changes hue to red at certain thresholds
+    - threshold TBD
