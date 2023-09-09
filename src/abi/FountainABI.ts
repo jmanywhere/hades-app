@@ -40,12 +40,39 @@ const abi = [
    {
       "inputs":[
          {
+            "internalType":"uint256",
+            "name":"amount",
+            "type":"uint256"
+         },
+         {
+            "internalType":"uint256",
+            "name":"pending",
+            "type":"uint256"
+         }
+      ],
+      "name":"HadesFountain__InvalidPendingAmount",
+      "type":"error"
+   },
+   {
+      "inputs":[
+         {
             "internalType":"address",
             "name":"",
             "type":"address"
          }
       ],
       "name":"HadesFountain__InvalidUpline",
+      "type":"error"
+   },
+   {
+      "inputs":[
+         {
+            "internalType":"address",
+            "name":"",
+            "type":"address"
+         }
+      ],
+      "name":"HadesFountain__InvalidUser",
       "type":"error"
    },
    {
@@ -571,6 +598,11 @@ const abi = [
          },
          {
             "internalType":"uint256",
+            "name":"airdrops_pending",
+            "type":"uint256"
+         },
+         {
+            "internalType":"uint256",
             "name":"accFaucet",
             "type":"uint256"
          },
@@ -587,6 +619,11 @@ const abi = [
          {
             "internalType":"uint256",
             "name":"lastAction",
+            "type":"uint256"
+         },
+         {
+            "internalType":"uint256",
+            "name":"faucetPenaltyDailyValue",
             "type":"uint256"
          },
          {
@@ -611,9 +648,9 @@ const abi = [
             "type":"uint256"
          },
          {
-            "internalType":"uint8",
-            "name":"_level",
-            "type":"uint8"
+            "internalType":"bool",
+            "name":"fromPending",
+            "type":"bool"
          }
       ],
       "name":"airdrop",
@@ -712,6 +749,11 @@ const abi = [
                {
                   "internalType":"uint256",
                   "name":"faucetEffectiveClaims",
+                  "type":"uint256"
+               },
+               {
+                  "internalType":"uint256",
+                  "name":"rebaseEffectiveClaims",
                   "type":"uint256"
                },
                {
@@ -821,31 +863,12 @@ const abi = [
             "type":"uint256"
          },
          {
-            "internalType":"int256",
+            "internalType":"uint256",
             "name":"_percent",
-            "type":"int256"
+            "type":"uint256"
          }
       ],
       "stateMutability":"view",
-      "type":"function"
-   },
-   {
-      "inputs":[
-         {
-            "internalType":"uint256",
-            "name":"nfv",
-            "type":"uint256"
-         }
-      ],
-      "name":"capPayout",
-      "outputs":[
-         {
-            "internalType":"uint256",
-            "name":"",
-            "type":"uint256"
-         }
-      ],
-      "stateMutability":"pure",
       "type":"function"
    },
    {
@@ -882,6 +905,11 @@ const abi = [
          {
             "internalType":"uint256",
             "name":"faucetEffectiveClaims",
+            "type":"uint256"
+         },
+         {
+            "internalType":"uint256",
+            "name":"rebaseEffectiveClaims",
             "type":"uint256"
          },
          {
@@ -1102,17 +1130,6 @@ const abi = [
    },
    {
       "inputs":[
-         
-      ],
-      "name":"faucetClaim",
-      "outputs":[
-         
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
-   },
-   {
-      "inputs":[
          {
             "internalType":"address",
             "name":"_user",
@@ -1128,32 +1145,12 @@ const abi = [
          },
          {
             "internalType":"uint256",
-            "name":"maxPayout",
-            "type":"uint256"
-         },
-         {
-            "internalType":"uint256",
             "name":"netPayout",
             "type":"uint256"
          },
          {
             "internalType":"uint256",
             "name":"sustainabilityFee",
-            "type":"uint256"
-         }
-      ],
-      "stateMutability":"view",
-      "type":"function"
-   },
-   {
-      "inputs":[
-         
-      ],
-      "name":"faucetWhaleBracket",
-      "outputs":[
-         {
-            "internalType":"uint256",
-            "name":"",
             "type":"uint256"
          }
       ],
@@ -1174,11 +1171,6 @@ const abi = [
             "internalType":"uint256",
             "name":"_grossClaimed",
             "type":"uint256"
-         },
-         {
-            "internalType":"int256",
-            "name":"_netDeposits",
-            "type":"int256"
          },
          {
             "internalType":"uint256",
@@ -1206,9 +1198,9 @@ const abi = [
             "type":"uint256"
          },
          {
-            "internalType":"int256",
+            "internalType":"uint256",
             "name":"_nerdPercent",
-            "type":"int256"
+            "type":"uint256"
          }
       ],
       "stateMutability":"view",
@@ -1478,17 +1470,6 @@ const abi = [
       "inputs":[
          
       ],
-      "name":"rebaseClaim",
-      "outputs":[
-         
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
-   },
-   {
-      "inputs":[
-         
-      ],
       "name":"renounceOwnership",
       "outputs":[
          
@@ -1599,21 +1580,6 @@ const abi = [
          }
       ],
       "name":"setMinimumInitial",
-      "outputs":[
-         
-      ],
-      "stateMutability":"nonpayable",
-      "type":"function"
-   },
-   {
-      "inputs":[
-         {
-            "internalType":"uint256",
-            "name":"_newSize",
-            "type":"uint256"
-         }
-      ],
-      "name":"setWhaleBracketSize",
       "outputs":[
          
       ],
