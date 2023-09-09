@@ -24,12 +24,12 @@ const useFetchUserData = () => {
           args: [address]
     })
     setUserFaucet({
-      faucetPayout: data[4],
-      rebasePayout: data[6],
-      hadesPercent: data[7],
-      nfv: data[2],
-      gfv: data[3],
-      maxPayout: data[5],
+      faucetPayout: data[3],
+      rebasePayout: data[5],
+      hadesPercent: data[6],
+      nfv: data[1],
+      gfv: data[2],
+      maxPayout: data[4],
       initFetch: true,
     })
     console.log({faucetData: data})
