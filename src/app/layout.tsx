@@ -49,7 +49,7 @@ export default function RootLayout({
               width={1904}
               height={640}
               alt="background bottom"
-              className="absolute bottom-0 z-0"
+              className="absolute bottom-0 z-0 pointer-events-none"
             />
           </div>
         </Providers>
