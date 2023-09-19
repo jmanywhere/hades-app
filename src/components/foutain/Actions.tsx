@@ -7,7 +7,7 @@ import { balanceAtom, userAtom } from "@/atoms/fountain";
 import { useDebounce } from "@/hooks/useDebounce";
 import classNames from "classnames";
 import { useAtomValue } from "jotai";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { formatEther, maxUint256, parseEther } from "viem";
 import {
   erc20ABI,
@@ -15,6 +15,7 @@ import {
   usePrepareContractWrite,
   useWaitForTransaction,
 } from "wagmi";
+import { fromBigIntToReadable } from "@/utils/bigintUtils";
 
 const Actions = () => {
   const [depositAmount, setDepositAmount] = useState(0);
@@ -84,6 +85,16 @@ const Actions = () => {
 
   console.log({ depositErr, approveError });
 
+  const rebaseBonus = useMemo(() => {
+    if (userData.hadesPercent <= 25_0000n) return 0;
+    if (userData.hadesPercent <= 50_0000n)
+      return (
+        (parseInt((userData.hadesPercent - 25_0000n).toString()) * 0.5) /
+        25_0000
+      );
+    return 0.5;
+  }, [userData.hadesPercent]);
+
   return (
     <div className="flex flex-col flex-grow font-gideon_roman">
       {balanceData.hadesBalance === 0n && (
@@ -96,7 +107,9 @@ const Actions = () => {
       <div className="flex flex-row  uppercase items-center gap-4 pb-4">
         <h5 className="text-base">
           Current Hades Bonus:{" "}
-          <span className="text-secondary text-3xl">0.00%</span>
+          <span className="text-secondary text-3xl">
+            {rebaseBonus.toString()}%
+          </span>
         </h5>
         <button
           className="enabled:hot-btn btn btn-sm disabled:bg-slate-400/20"
@@ -105,40 +118,49 @@ const Actions = () => {
           Boost
         </button>
       </div>
-      <div className="join font-gideon_roman border-secondary/50 border-[1px]">
-        <input
-          className="join-item input w-full text-3xl"
-          placeholder="Deposit $HADES"
-          type="number"
-          value={depositAmount}
-          onChange={(e) => {
-            if (isNaN(e.target.valueAsNumber)) setDepositAmount(0);
-            else setDepositAmount(e.target.valueAsNumber);
-          }}
-          onFocus={(e) => e.target.select()}
-        />
-        <button
-          className="join-item btn btn-link no-underline bg-transparent"
-          onClick={() =>
-            setDepositAmount(parseFloat(formatEther(balanceData.hadesBalance)))
-          }
-        >
-          MAX
-        </button>
-        <button
-          className={classNames(
-            "join-item btn disabled:bg-slate-400/20",
-            isNOTAllowed ? "enabled:cool-btn" : "enabled:hot-btn",
-            isDepositing || isApproving ? "loading loading-spinner mx-7" : ""
-          )}
-          onClick={() => {
-            if (isNOTAllowed) approveWrite?.();
-            else depositWrite?.();
-          }}
-          disabled={isNOTAllowed ? !!approveError : !!depositErr}
-        >
-          {isNOTAllowed ? "Approve" : "Deposit"}
-        </button>
+      <div className="form-control font-gideon_roman">
+        <div className="join border-secondary/50 border-[1px]">
+          <input
+            className="join-item input w-full text-3xl"
+            placeholder="Deposit $HADES"
+            type="number"
+            value={depositAmount}
+            onChange={(e) => {
+              if (isNaN(e.target.valueAsNumber)) setDepositAmount(0);
+              else setDepositAmount(e.target.valueAsNumber);
+            }}
+            onFocus={(e) => e.target.select()}
+          />
+          <button
+            className="join-item btn btn-link no-underline bg-transparent"
+            onClick={() =>
+              setDepositAmount(
+                parseFloat(formatEther(balanceData.hadesBalance))
+              )
+            }
+          >
+            MAX
+          </button>
+          <button
+            className={classNames(
+              "join-item btn disabled:bg-slate-400/20",
+              isNOTAllowed ? "enabled:cool-btn" : "enabled:hot-btn",
+              isDepositing || isApproving ? "loading loading-spinner mx-7" : ""
+            )}
+            onClick={() => {
+              if (isNOTAllowed) approveWrite?.();
+              else depositWrite?.();
+            }}
+            disabled={isNOTAllowed ? !!approveError : !!depositErr}
+          >
+            {isNOTAllowed ? "Approve" : "Deposit"}
+          </button>
+        </div>
+        <label className="label">
+          <span className="label-text-alt">
+            Wallet HADES: {fromBigIntToReadable(balanceData.hadesBalance)}
+          </span>
+        </label>
       </div>
       <div className="flex flex-row items-center justify-center gap-4 pt-5">
         <button

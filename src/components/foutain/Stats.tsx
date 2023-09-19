@@ -16,12 +16,7 @@ const StatContainer = () => {
           name="claimable"
           value={userData.faucetPayout + userData.rebasePayout}
         />
-        <Stat
-          name="pending"
-          value={
-            userData.maxPayout - userData.faucetPayout - userData.rebasePayout
-          }
-        />
+        <Stat name="pending" value={userData.maxPayout} />
       </div>
     </section>
   );
