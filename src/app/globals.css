@@ -31,6 +31,16 @@
   .cool-btn{
     @apply cool-bg text-purple-800 hover:opacity-80 font-gideon_roman;
   }
+
+  .cerberus-gauge{
+    @apply bg-cerberus bg-cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+  }
 }
 
 

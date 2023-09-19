@@ -61,12 +61,15 @@ const useFetchUserData = () => {
   },[address, setBalance])
 
   useEffect( () => {
+    if(!address) return;
+    fetchData();
+    fetchTokenData();
     const interval = setInterval( () => {
       fetchData();
       fetchTokenData();
     }, 10000)
     return () => clearInterval(interval)
-  },[fetchData, fetchTokenData])
+  },[address, fetchData, fetchTokenData])
 
   return [fetchData]
 };

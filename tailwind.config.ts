@@ -23,6 +23,9 @@ const config: Config = {
         greek: ["var(--font-greek)"],
         dalek: ["var(--font-dalek)"],
         gideon_roman: ["var(--font-gideon-roman)"],
+      },
+      backgroundImage: {
+        cerberus: "url('/cerberus.png')",
       }
     },
   },

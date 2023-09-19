@@ -1,4 +1,5 @@
 import FountainActions from "@/components/foutain/Actions";
+import Gauge from "@/components/foutain/CerberusGauge";
 import StatContainer from "@/components/foutain/Stats";
 import { type NextPage } from "next";
 import Image from "next/image";
@@ -24,9 +25,9 @@ const FountainPage: NextPage = () => {
           <h2 className="container text-secondary font-greek text-3xl z-10">
             Your Hades
           </h2>
+          <Gauge />
         </section>
       </div>
-      Foundation Page
     </main>
   );
 };
