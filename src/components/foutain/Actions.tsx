@@ -96,7 +96,7 @@ const Actions = () => {
   }, [userData.hadesPercent]);
 
   return (
-    <div className="flex flex-col flex-grow font-gideon_roman">
+    <div className="flex flex-col flex-grow font-gideon_roman ">
       {balanceData.hadesBalance === 0n && (
         <div>
           <button className="btn btn-primary" onClick={() => mintTestHades?.()}>
@@ -104,7 +104,7 @@ const Actions = () => {
           </button>
         </div>
       )}
-      <div className="flex flex-row  uppercase items-center gap-4 pb-4">
+      <div className="flex flex-row justify-center uppercase items-center gap-4 pb-4">
         <h5 className="text-base">
           Current Hades Bonus:{" "}
           <span className="text-secondary text-3xl">
@@ -165,23 +165,32 @@ const Actions = () => {
       <div className="flex flex-row items-center justify-center gap-4 pt-5">
         <button
           className={classNames(
-            "enabled:hot-btn btn disabled:bg-slate-400/20 btn-sm w-[180px]",
-            isClaiming ? "loading loading-spinner" : ""
+            "enabled:hot-btn btn disabled:bg-slate-400/20 btn-sm w-[180px]"
           )}
           disabled={!!claimErr || isClaiming}
           onClick={() => claimWrite?.()}
         >
-          Claim
+          <span
+            className={classNames(
+              isClaiming ? "loading loading-spinner" : "hidden"
+            )}
+          />
+          {isClaiming ? "" : "Claim"}
         </button>
         <button
           className={classNames(
-            "enabled:hot-btn btn disabled:bg-slate-400/20 btn-sm w-[180px]",
-            isCompounding ? "loading loading-spinner" : ""
+            "enabled:hot-btn btn disabled:bg-slate-400/20 btn-sm w-[180px]"
           )}
           disabled={!!compoundErr || isCompounding || userData.nfv === 0n}
           onClick={() => compoundWrite?.()}
         >
-          Compound
+          <span
+            className={classNames(
+              "contents",
+              isCompounding ? "loading loading-spinner" : "hidden"
+            )}
+          />
+          {isCompounding ? "" : "Compound"}
         </button>
       </div>
     </div>

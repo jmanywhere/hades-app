@@ -8,8 +8,8 @@ const StatContainer = () => {
   useFetchUserData();
   const userData = useAtomValue(userAtom);
   return (
-    <section className="flex flex-col items-center justify-center">
-      <div className="flex flex-col md:flex-row md:max-w-lg lg:max-w-screen flex-wrap items-center justify-center gap-4 pt-5">
+    <section className="flex flex-col items-center justify-center py-10">
+      <div className="flex flex-col md:flex-row md:max-w-lg lg:max-w-screen flex-wrap items-center justify-center gap-4 pt-5 z-10">
         <Stat name="nfv" value={userData.nfv} />
         <Stat name="gfv" value={userData.gfv} />
         <Stat
