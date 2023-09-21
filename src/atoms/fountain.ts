@@ -7,10 +7,11 @@ export const userAtom = atom({
   nfv: 0n,
   gfv: 0n,
   maxPayout: 0n,
-  initFetch: false,
+  pendingAirdrops: 0n,
 })
 
 export const balanceAtom = atom({
   hadesBalance: 0n,
   hadesFountainAllowance: 0n,
+  hadesPrice: 5, // price in USD
 })
