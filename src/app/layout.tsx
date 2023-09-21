@@ -65,7 +65,7 @@ const Footer = () => {
       <nav className="flex flex-row items-center justify-center gap-4">
         <a
           href="https://medium.com"
-          className="btn btn-circle btn-sm hover:opacity-90"
+          className="btn bg-main-bg hover:bg-white/30 border-0 btn-circle btn-sm hover:opacity-90"
           target="_blank"
           rel="noopener nonreferrer"
         >
@@ -73,7 +73,7 @@ const Footer = () => {
         </a>
         <a
           href="https://telegram.com"
-          className="btn btn-circle btn-sm hover:opacity-90"
+          className="btn bg-main-bg hover:bg-white/30 border-0 btn-circle btn-sm hover:opacity-90"
           target="_blank"
           rel="noopener nonreferrer"
         >
@@ -86,7 +86,7 @@ const Footer = () => {
         </a>
         <a
           href="https://x.com"
-          className="btn btn-circle btn-sm hover:opacity-90"
+          className="btn bg-main-bg hover:bg-white/30 border-0 btn-circle btn-sm hover:opacity-90"
           target="_blank"
           rel="noopener nonreferrer"
         >
@@ -99,7 +99,7 @@ const Footer = () => {
         </a>
         <a
           href="https://gmail.com"
-          className="btn btn-circle btn-sm hover:opacity-90"
+          className="btn bg-main-bg hover:bg-white/30 border-0 btn-circle btn-sm hover:opacity-90"
           target="_blank"
           rel="noopener nonreferrer"
         >
@@ -107,11 +107,18 @@ const Footer = () => {
         </a>
         <a
           href="https://gitbook.com"
-          className="btn btn-circle btn-sm hover:opacity-90"
+          className="btn bg-main-bg hover:bg-white/30 border-0 btn-circle btn-sm hover:opacity-90 overflow-hidden"
           target="_blank"
           rel="noopener nonreferrer"
         >
-          <Image src="/gitbook.png" alt="medium link" width={32} height={32} />
+          <div>
+            <Image
+              src="/gitbook.png"
+              alt="medium link"
+              width={32}
+              height={32}
+            />
+          </div>
         </a>
       </nav>
     </footer>
