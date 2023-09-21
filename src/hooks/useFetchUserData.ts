@@ -15,13 +15,18 @@ const useFetchUserData = () => {
 
   const fetchData = useCallback(async () => {
     if(!address) return;
-    console.log('fetchData')
 
     const data = await readContract({
           address: fountain,
           abi: fountainAbi,
           functionName: "getNerdData",
           args: [address]
+    })
+    const accounting = await readContract({
+      address: fountain,
+      abi: fountainAbi,
+      functionName: "accounting",
+      args: [address]
     })
     setUserFaucet({
       faucetPayout: data[3],
@@ -30,9 +35,8 @@ const useFetchUserData = () => {
       nfv: data[1],
       gfv: data[2],
       maxPayout: data[4],
-      initFetch: true,
+      pendingAirdrops: accounting[5]
     })
-    console.log({faucetData: data})
   },[address, setUserFaucet])
 
   const fetchTokenData = useCallback(async () => {
@@ -54,9 +58,11 @@ const useFetchUserData = () => {
         },
       ]
     })
+    // TODO get price in USD
     setBalance({
       hadesBalance: data[0]?.result || 0n,
       hadesFountainAllowance: data[1]?.result || 0n,
+      hadesPrice: 5,
     });
   },[address, setBalance])
 
