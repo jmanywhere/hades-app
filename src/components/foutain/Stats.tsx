@@ -1,11 +1,9 @@
 "use client";
 import { userAtom } from "@/atoms/fountain";
-import useFetchUserData from "@/hooks/useFetchUserData";
 import { useAtomValue } from "jotai";
-import { formatEther, parseEther } from "viem";
+import { formatEther } from "viem";
 
 const StatContainer = () => {
-  useFetchUserData();
   const userData = useAtomValue(userAtom);
   return (
     <section className="flex flex-col items-center justify-center py-10">

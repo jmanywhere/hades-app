@@ -6,9 +6,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import classNames from "classnames";
 import { CgMenuRightAlt } from "react-icons/cg";
+// Hooks
+import useFetchUserData from "@/hooks/useFetchUserData";
 
 export const Header = () => {
   const pathname = usePathname();
+  useFetchUserData();
+
   return (
     <header className="navbar">
       <div className="navbar-start flex flex-row items-center">
@@ -18,7 +22,7 @@ export const Header = () => {
           width={95}
           className="w-[80px] md:w-[95px]"
         />
-        <div className="font-dalek text-5xl md:text-5xl cool-text pr-6">
+        <div className="font-dalek text-3xl md:text-5xl cool-text pr-6">
           Hades
         </div>
       </div>
