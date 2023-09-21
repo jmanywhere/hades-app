@@ -18,6 +18,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "main-bg": "#17071A",
+      },
       fontFamily:{
         inter: ["var(--font-inter)"],
         greek: ["var(--font-greek)"],
