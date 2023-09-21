@@ -106,9 +106,9 @@ const Actions = () => {
       )}
       <div className="flex flex-row justify-center uppercase items-center gap-4 pb-4">
         <h5 className="text-base">
-          Current Hades Bonus:{" "}
+          Current Daily Hades Bonus:{" "}
           <span className="text-secondary text-3xl">
-            {rebaseBonus.toString()}%
+            {(rebaseBonus + 1).toString()}%
           </span>
         </h5>
         <button
