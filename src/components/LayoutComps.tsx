@@ -1,6 +1,5 @@
 "use client";
 
-import { Web3Button } from "@web3modal/react";
 import Image from "next/image";
 import HeadLogo from "@/../public/logo_head.png";
 import Link from "next/link";
@@ -10,7 +9,6 @@ import { CgMenuRightAlt } from "react-icons/cg";
 
 export const Header = () => {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <header className="navbar">
       <div className="navbar-start flex flex-row items-center">
@@ -72,8 +70,9 @@ export const Header = () => {
         </Link>
       </nav>
       <div className="navbar-end">
-        <div className="hidden md:block">
-          <Web3Button icon="hide" balance="hide" />
+        <div className="hidden md:flex flex-row items-center gap-x-1">
+          <w3m-network-button />
+          <w3m-button balance="hide" />
         </div>
         <button className="lg:hidden btn bg-secondary/20 hover:bg-secondary/40 ml-4">
           <CgMenuRightAlt className="text-3xl text-white" />
